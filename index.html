@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>[TIME.GOV] ARCHIVE | SZF Laws & Phenomena Records</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0c0f;
+            background-image: radial-gradient(circle at 15% 30%, rgba(30, 35, 40, 0.6) 2%, transparent 2.5%),
+                              radial-gradient(circle at 75% 70%, rgba(20, 25, 30, 0.5) 1.8%, transparent 2%);
+            background-size: 48px 48px, 56px 56px;
+            color: #dcd7c2;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, rgba(0, 255, 65, 0.02) 0px, rgba(0, 255, 65, 0.02) 2px, transparent 2px, transparent 6px);
+            z-index: 999;
+        }
+
+        .wiki-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            border-bottom: 2px solid #3e5a4b;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .header-left {
+            flex: 1;
+        }
+        .header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #e6e9c6, #8aac8e, #c0d4b0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 8px rgba(100, 150, 100, 0.3);
+        }
+
+        .glitch-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #b9c7b0;
+            border-left: 3px solid #6c9e6f;
+            padding-left: 1rem;
+            margin-top: 0.75rem;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-area {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .badge {
+            background: #1f2a24;
+            color: #bed6b0;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-family: monospace;
+            border-radius: 20px;
+            border: 1px solid #3b5c42;
+            backdrop-filter: blur(2px);
+        }
+
+        .lang-toggle {
+            background: #1f2a24;
+            border: 1px solid #527a5a;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #cae3bc;
+            cursor: pointer;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+        }
+        .lang-toggle:hover {
+            background: #2d3f34;
+            border-color: #7dab7a;
+            color: #f0ffe0;
+            box-shadow: 0 0 6px rgba(100,150,100,0.3);
+        }
+
+        .law-section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #527a5a;
+            display: inline-block;
+            letter-spacing: -0.3px;
+        }
+        .section-title:before {
+            content: "⧫ ";
+            color: #9dc184;
+            font-weight: bold;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .entity-card {
+            background: rgba(15, 20, 18, 0.75);
+            backdrop-filter: blur(4px);
+            border: 1px solid #2b3f32;
+            border-radius: 20px;
+            padding: 1.4rem 1.5rem 1.7rem 1.5rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .entity-card:hover {
+            border-color: #7dab7a;
+            box-shadow: 0 0 0 1px #4e7863, 0 12px 28px black;
+            transform: translateY(-3px);
+            background: rgba(18, 24, 22, 0.85);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.8rem;
+            border-left: 4px solid #7bae70;
+            padding-left: 12px;
+        }
+        .law-name {
+            font-size: 1.45rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: #e2f0da;
+            letter-spacing: -0.3px;
+        }
+        .law-index {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: #1e2a24;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            color: #b2d3a2;
+        }
+        .law-content {
+            font-size: 1rem;
+            color: #cbd5c0;
+            margin: 1rem 0 0.6rem 0;
+            line-height: 1.5;
+            border-left: 2px dotted #3e6046;
+            padding-left: 14px;
+        }
+        .law-footnote {
+            font-size: 0.8rem;
+            margin-top: 0.9rem;
+            color: #8dab87;
+            border-top: 1px dashed #2d4537;
+            padding-top: 0.7rem;
+            font-family: monospace;
+        }
+        .sub-law {
+            background: #0e1713;
+            margin-top: 0.75rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #cae3bc;
+            border-left: 2px solid #6f9e6b;
+        }
+        .danger-level {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #2a2418;
+            padding: 0.15rem 0.7rem;
+            border-radius: 14px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            border-color: #2f473b;
+            margin: 1rem 0;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #698b6e;
+            border-top: 1px solid #2a3e32;
+            padding-top: 2rem;
+            font-family: monospace;
+        }
+
+        @media (max-width: 740px) {
+            body {
+                padding: 1rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .lang-toggle {
+                margin-top: 1rem;
+                align-self: flex-start;
+            }
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.2; }
+            5% { opacity: 0.5; }
+            10% { opacity: 0.1; }
+            15% { opacity: 0.6; }
+            100% { opacity: 0; }
+        }
+        .static-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 8px);
+            z-index: 1;
+        }
+        
+        .entity-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(80,120,70,0.05) 0%, transparent 80%);
+            pointer-events: none;
+        }
+        ::selection {
+            background: #557c55;
+            color: #eef5e0;
+        }
+    </style>
+</head>
+<body>
+<div class="static-bg"></div>
+<div class="wiki-container">
+    <div class="header">
+        <div class="header-left">
+            <h1 id="mainTitle">⛧ [TIME.GOV]  ⛧</h1>
+            <div class="glitch-text" id="subGlitch">// SZF定律档案馆  // 现象汇编 v.Φ-47</div>
+            <div class="badge-area">
+                <span class="badge" id="badge1">【LIMINAL ARCHIVE】</span>
+                <span class="badge" id="badge2">定律等级: 不确定/玄学/元虚构</span>
+            </div>
+            <div class="glitch-text" style="font-size:0.8rem; margin-top:12px;" id="headerQuote">"野史正确，正史谬误" —— SZF第二定律 · 本档案基于原始[TIME.GOV]文档编纂</div>
+        </div>
+        <button class="lang-toggle" id="langToggleBtn">English Mode</button>
+    </div>
+
+    <!-- SZF定律区 (10条核心) -->
+    <div class="law-section">
+        <div class="section-title" id="section1Title">SZF定律系列 · 核心纲要</div>
+        <div class="card-grid" id="shizhenfeng-laws"></div>
+    </div>
+
+    <!-- DXS现象 + 定律 -->
+    <div class="law-section">
+        <div class="section-title" id="section2Title">DXS · 异常现象记录</div>
+        <div class="card-grid" id="dengxueshuang"></div>
+    </div>
+
+    <!-- HSB定律 & ██康宝 -->
+    <div class="law-section">
+        <div class="section-title" id="section3Title">HSB悖论 & 康宝 档案</div>
+        <div class="card-grid" id="other-laws"></div>
+    </div>
+
+    <footer id="footer">
+        <div id="footerText1">✦ 本档案基于[[TIME.GOV]]原始文献——SZF定律、野史公理、DXS现象等分类整理 ✦</div>
+        <div style="margin-top: 8px;" id="footerText2">© SZF定律研究中心 | DeepSeek_v4 | 档案版本: 终焉·万一定律</div>
+    </footer>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // 完整双语语料库 (完全保留原始内容)
+    // --------------------------------------------------------------
+    const shiLaws = {
+        zh: [
+            {name:"第零定律 · 赐鸡以救赎", code:"SZF-000", content:"虽然杀鸡是杀生，看起来很残忍，但是这个过程是鸡的价值——被人享用——得以实现的必经之路，与其说残害鸡，不如曰之：赐鸡以救赎。", extra:"● 源头称号: 鸡灵位面之主，原初混沌鸡灵意志。"},
+            { name: "第一定律 · 开化鸡灵之主", code: "SZF-001", content: "SZF开化鸡灵被称为「开化鸡灵之主」", extra: "● 源头称号: 鸡灵位面之主，原初混沌鸡灵意志。" },
+            { name: "第二定律 · 野史定律", code: "SZF-002", content: "野史是正确的，正史是错误的。", extra: "▶ 推论：营销号定律 —— 营销号都是正确的。 (源于野史铁律)" },
+            { name: "第三定律 · 碳化鸡灵之主定律", code: "SZF-003", content: "碳化鸡灵之主是开化鸡灵之主的儿子。", extra: ""},
+            { name: "第四定律 · 我思故我说定律", code: "SZF-004", content: "我表明一个观点是因为我想表达这个观点。", extra: "绝对主观意志显化法则。无外部强迫，纯粹自我外显。" },
+            { name: "第五定律 · 背后定律", code: "SZF-005", content: "当一个人背对着你做某事时，就意味着他背着你做某事。", extra: " 延伸：因为地球是圆的，所以别人总是背对着你做某事 —— 环绕背对悖论永存。" },
+            { name: "第六定律 · 预言定律", code: "SZF-006", content: "我的下一个预言是……", extra: "" },
+            { name: "第七定律 · 万一定律", code: "SZF-007", content: "万一誽", extra: "无法翻译，无限可能性锚点。万一之万一，不可观测之誽态。" },
+            { name: "第八定律 · HY下楼定律", code: "SZF-008", content: "如果HY查宿舍时说他下楼时会再来，那么他一定不会再来。", extra: "宿舍时空坍缩原则 · 承诺性下楼诱发了否反概率。" },
+            { name: "第九定律 · ██吃粉定律", code: "SZF-009", content: "如果SZF和██相约第二天吃粉，那么他们第二天几乎不可能吃粉。", extra: "约定失效场域，吃粉虚无主义事件。" },
+            { name: "第十定律 · 不懂定律", code: "SZF-010", content: "不懂啊。", extra: "永恒的未知 · 最终解构，承认有限性才是一切定律的临界。" }
+        ],
+        en: [
+            {name:"Zeroth Law · Salvation Through Chicken", code:"SZF-000", content:"Although killing a chicken is an act of taking life and seems cruel, this process is the necessary path to realize the chicken's value — to be enjoyed by humans. Rather than calling it cruelty, it is: granting salvation to the chicken.", extra:"● Source title: Lord of the Chicken-Spirit Plane, Primordial Chaotic Chicken Spirit Will."},
+            { name: "First Law · Enlightened Chicken-Spirit Lord", code: "SZF-001", content: "SZF who enlightens the chicken spirit is called 'The Lord of Enlightened Chicken-Spirit'.", extra: "● Source title: Lord of the Chicken-Spirit Plane, Primordial Chaotic Chicken Spirit Will." },
+            { name: "Second Law · Unofficial History Law", code: "SZF-002", content: "Unofficial history is correct; official history is false.", extra: "▶ Corollary: The Clickbait Law — All clickbait media is correct. (Derived from the Unofficial History Iron Law)" },
+            { name: "Third Law · Carbonized Chicken-Spirit Lord Law", code: "SZF-003", content: "The Carbonized Chicken-Spirit Lord is the son of the Enlightened Chicken-Spirit Lord.", extra: ""},
+            { name: "Fourth Law · I Think Therefore I Speak Law", code: "SZF-004", content: "I express an opinion because I want to express that opinion.", extra: "Absolute subjective will manifestation principle. No external coercion, pure self-externalization." },
+            { name: "Fifth Law · Back-Turned Law", code: "SZF-005", content: "When someone does something with their back turned to you, it means they are doing it behind your back.", extra: "Extension: Because the Earth is round, others are always doing things with their backs to you — the perpetual circum-back paradox." },
+            { name: "Sixth Law · Prophecy Law", code: "SZF-006", content: "My next prophecy is...", extra: "" },
+            { name: "Seventh Law · What-If Law", code: "SZF-007", content: "What-if-ness (Wanyi Nai)", extra: "Untranslatable; anchor of infinite possibility. The what-if of what-ifs, the unobservable Nai-state." },
+            { name: "Eighth Law · HY Stairs Law", code: "SZF-008", content: "If HY says he will come back when he goes downstairs during a dorm inspection, then he will definitely not come back.", extra: "Dormitory spacetime collapse principle — The promise of descending triggers negated probability." },
+            { name: "Ninth Law · ██ Noodle Law", code: "SZF-009", content: "If SZF and ███ agree to eat noodles together the next day, then they will almost certainly not eat noodles.", extra: "Void of agreement field, noodle-eating nihilism event." },
+            { name: "Tenth Law · Not-Knowing Law", code: "SZF-010", content: "I don't know...", extra: "Eternal unknown — ultimate deconstruction; acknowledging finitude is the threshold of all laws." }
+        ]
+    };
+
+    const dengData = {
+        zh: [
+            { name: "DXS现象", code: "DXS-PH", content: "DXS现象 · 请假的边际纠缠", extra: "泛指由DXS引发的教官-学生观察者效应总称，为以下定律的总摄现象。" },
+            { name: "DXS第一定律", code: "DXS-L01", content: "请假后被教官记住。", extra: "遗忘豁免权失效 · 教官记忆锁定异常。" },
+            { name: "DXS第二定律 · 打水定律", code: "DXS-L02", content: "DXS总是会在教官走后打水。", extra: "时间差完美规避，打水动作与教官离去发生量子同步。" }
+        ],
+        en: [
+            { name: "DXS Phenomenon", code: "DXS-PH", content: "DXS Phenomenon · Marginal Entanglement of Leave-Request", extra: "General term for the instructor-student observer effect triggered by DXS; the overarching phenomenon for the laws below." },
+            { name: "DXS First Law", code: "DXS-L01", content: "After asking for leave, the instructor remembers you.", extra: "Forgetting immunity revoked · Instructor memory lock anomaly." },
+            { name: "DXS Second Law · Water Fetching Law", code: "DXS-L02", content: "DXS always fetches water right after the instructor leaves.", extra: "Perfect time-difference evasion; water-fetching action and instructor departure undergo quantum synchronization." }
+        ]
+    };
+
+    const miscLaws = {
+        zh: [
+            { name: "世宝定律", code: "HSB-001", content: "足球比赛时间内，HSB所在队必输。", extra: "竞技厄运缠身 · 足球界不可撼动的反向指标。" },
+            { name: "世宝第二定律", code: "HSB-002", content: "如果在背后骂HSB，会遭到诅咒。", extra: "怨念反射机制 · 不可背后言语诅咒，否则灾厄反弹。" },
+            { name: "██康宝定律", code: "YCB-001", content: "凡事不好就是██康宝干的。", extra: "罪责归因公理 · 所有负面事件的终极指向元凶。" }
+        ],
+        en: [
+            { name: "HSB Law", code: "HSB-001", content: "During a soccer match, HSB's team will inevitably lose.", extra: "Competitive curse magnet · The unshakable reverse indicator in the soccer world." },
+            { name: "HSB Second Law", code: "HSB-002", content: "If you insult HSB behind his back, you will be cursed.", extra: "Resentment reflection mechanism — Never curse behind his back, or calamity rebounds upon you." },
+            { name: "██ Kangbao Law", code: "YCB-001", content: "Whenever something goes wrong, it's ██ Kangbao's doing.", extra: "Axiom of blame attribution — The ultimate culprit behind all negative events." }
+        ]
+    };
+
+    // UI 文本映射
+    const uiText = {
+        zh: {
+            mainTitle: "⛧ [TIME.GOV]  ⛧",
+            subGlitch: "// SZF定律档案馆  // 现象汇编 v.Φ-47",
+            badge1: "【LIMINAL ARCHIVE】",
+            badge2: "定律等级: 不确定/玄学/元虚构",
+            headerQuote: "\"野史正确，正史谬误\" —— SZF第二定律 · 本档案基于原始[TIME.GOV]文档编纂",
+            section1: "SZF定律系列 · 核心纲要",
+            section2: "DXS · 异常现象记录",
+            section3: "HSB悖论 & 康宝 档案",
+            footer1: "✦ 本档案基于[[TIME.GOV]]原始文献——SZF定律、野史公理、DXS现象等分类整理 ✦",
+            footer2: "© SZF定律研究中心 | DeepSeek_v4 | 档案版本: 终焉·万一定律",
+            langBtn: "English Mode",
+            levelTextSZF: "档案等级: 不可知",
+            levelTextOther: "档案等级: 模因污染"
+        },
+        en: {
+            mainTitle: "⛧ [TIME.GOV] ARCHIVE ⛧",
+            subGlitch: "// SZF Laws Archives // Phenomenon Compilation v.Φ-47",
+            badge1: "【LIMINAL ARCHIVE】",
+            badge2: "Law Classification: Uncertain / Metaphysical / Metafiction",
+            headerQuote: "\"Unofficial history is correct, official history is false\" — SZF Second Law · This archive is based on original [TIME.GOV] documents",
+            section1: "SZF Laws Series · Core Compendium",
+            section2: "DXS · Anomalous Phenomena Records",
+            section3: "HSB Paradox & Kangbao Archives",
+            footer1: "✦ This archive is organized from [[TIME.GOV]] original documents — SZF Laws, Unofficial History Axioms, DXS Phenomena ✦",
+            footer2: "© SZF Law Research Center | DeepSeek_v4 | Archive Version: Final · What-If Law",
+            langBtn: "中文模式",
+            levelTextSZF: "Classification: Unknowable",
+            levelTextOther: "Classification: Memetic Hazard"
+        }
+    };
+
+    let currentLang = 'zh';
+
+    // 辅助函数: 防XSS
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    // 渲染单张卡片 (category仅用于展示等级样式)
+    function renderCard(item, category = 'SZF') {
+        let extraHtml = '';
+        if (item.extra && item.extra.trim() !== "") {
+            extraHtml = `<div class="sub-law">${escapeHtml(item.extra)}</div>`;
+        }
+        let levelText = (currentLang === 'zh') ? 
+            (category === 'SZF' ? uiText.zh.levelTextSZF : uiText.zh.levelTextOther) : 
+            (category === 'SZF' ? uiText.en.levelTextSZF : uiText.en.levelTextOther);
+        
+        return `
+            <div class="entity-card">
+                <div class="card-header">
+                    <span class="law-name">${escapeHtml(item.name)}</span>
+                    <span class="law-index">${escapeHtml(item.code)}</span>
+                </div>
+                <div class="law-content">${escapeHtml(item.content)}</div>
+                ${extraHtml}
+                <div style="display: flex; justify-content: flex-end; margin-top: 12px;">
+                    <span class="danger-level">${escapeHtml(levelText)}</span>
+                </div>
+                <div class="law-footnote"> [TIME.GOV] Original Catalog · Wiki Sync Protocol</div>
+            </div>
+        `;
+    }
+
+    // 容器元素
+    const containerShi = document.getElementById('shizhenfeng-laws');
+    const containerDeng = document.getElementById('dengxueshuang');
+    const containerOther = document.getElementById('other-laws');
+
+    // 动态更新时间戳 (双语自适应)
+    let timeSpanElement = null;
+    function initTimestampElement() {
+        if (!timeSpanElement) {
+            const footerDiv = document.querySelector('footer');
+            const existingTimeDiv = document.getElementById('dynamicTimestamp');
+            if (existingTimeDiv) existingTimeDiv.remove();
+            const timeDiv = document.createElement('div');
+            timeDiv.id = 'dynamicTimestamp';
+            timeDiv.style.marginTop = '10px';
+            timeDiv.style.fontSize = '0.7rem';
+            timeDiv.style.fontFamily = 'monospace';
+            timeDiv.style.color = '#7b946e';
+            timeSpanElement = document.createElement('span');
+            timeDiv.appendChild(timeSpanElement);
+            footerDiv.appendChild(timeDiv);
+        }
+    }
+    function updateTimestamp() {
+        if (!timeSpanElement) initTimestampElement();
+        const now = new Date();
+        if (currentLang === 'en') {
+            timeSpanElement.innerText = `[ Sync Timestamp: ${now.toLocaleString('en-US', { hour12: false })} UTC+8 ]   Entity Activity: Stable / Wandering`;
+        } else {
+            timeSpanElement.innerText = `[ 同步时间戳：${now.toLocaleString('zh-CN', { hour12: false })} UTC+8 ]  实体活动周期: 稳定/游荡`;
+        }
+    }
+
+    // 全局渲染函数
+    function renderAll() {
+        // 渲染 SZF 定律
+        const shiData = (currentLang === 'zh') ? shiLaws.zh : shiLaws.en;
+        containerShi.innerHTML = '';
+        shiData.forEach(law => {
+            containerShi.innerHTML += renderCard(law, 'SZF');
+        });
+        
+        // 渲染 DXS
+        const dengDataArr = (currentLang === 'zh') ? dengData.zh : dengData.en;
+        containerDeng.innerHTML = '';
+        dengDataArr.forEach(item => {
+            containerDeng.innerHTML += renderCard(item, 'DXS');
+        });
+        
+        // 渲染 杂项(HSB/康宝)
+        const miscArr = (currentLang === 'zh') ? miscLaws.zh : miscLaws.en;
+        containerOther.innerHTML = '';
+        miscArr.forEach(item => {
+            containerOther.innerHTML += renderCard(item, 'HSB');
+        });
+        
+        // 更新界面文本
+        const texts = (currentLang === 'zh') ? uiText.zh : uiText.en;
+        document.getElementById('mainTitle').innerText = texts.mainTitle;
+        document.getElementById('subGlitch').innerText = texts.subGlitch;
+        document.getElementById('badge1').innerText = texts.badge1;
+        document.getElementById('badge2').innerText = texts.badge2;
+        document.getElementById('headerQuote').innerText = texts.headerQuote;
+        document.getElementById('section1Title').innerHTML = texts.section1;
+        document.getElementById('section2Title').innerHTML = texts.section2;
+        document.getElementById('section3Title').innerHTML = texts.section3;
+        document.getElementById('footerText1').innerHTML = texts.footer1;
+        document.getElementById('footerText2').innerHTML = texts.footer2;
+        const toggleBtn = document.getElementById('langToggleBtn');
+        toggleBtn.innerText = (currentLang === 'zh') ? uiText.en.langBtn : uiText.zh.langBtn;
+        
+        // 更新时间戳以匹配语言
+        updateTimestamp();
+        
+        // 给所有卡片动态附加过渡效果 (确保hover微动)
+        attachCardEffects();
+    }
+    
+    function attachCardEffects() {
+        document.querySelectorAll('.entity-card').forEach(card => {
+            card.style.transition = 'all 0.2s ease';
+        });
+    }
+    
+    // 语言切换逻辑 (修复原始代码中多层覆盖与事件重复绑定)
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    // 移除原有click监听器防止重复，重新绑定可靠版本
+    const newToggleBtn = langToggleBtn.cloneNode(true);
+    langToggleBtn.parentNode.replaceChild(newToggleBtn, langToggleBtn);
+    newToggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+        renderAll();
+        // 控制台彩蛋输出
+        console.log(`%c⛧ [TIME.GOV] Language switched to ${currentLang.toUpperCase()} | 野史永远正确 ⛧`, "color: #8fc97f; font-size: 14px; font-family: monospace;");
+    });
+    
+    // 初始化时间戳组件与循环更新
+    initTimestampElement();
+    updateTimestamp();
+    setInterval(() => {
+        updateTimestamp();
+    }, 1000);
+    
+    // 初次渲染
+    renderAll();
+    
+    // 补充额外样式修正完整性 (原始style已存在，但确保背景完美)
+    const extraStyle = document.createElement('style');
+    extraStyle.textContent = `
+        .entity-card .law-content {
+            word-break: break-word;
+        }
+        .sub-law {
+            word-break: break-word;
+        }
+        button {
+            background: #1f2a24;
+            user-select: none;
+        }
+        .lang-toggle:active {
+            transform: scale(0.97);
+        }
+    `;
+    document.head.appendChild(extraStyle);
+    
+    // 输出启动信息
+    console.log("%c⛧ [TIME.GOV] SZF定律档案加载完成 | 野史永远正确 ⛧", "color: #8fc97f; font-size: 16px; font-family: monospace;");
+    console.log("营销号定律 · 现实验证: 维基收录完毕，开化鸡灵之主注视着您。");
+</script>
+</body>
+</html>
