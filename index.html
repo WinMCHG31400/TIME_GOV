@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>[TIME.GOV] of SZF ARCHIVE | SZF Laws & Phenomena Records</title>
+    <title>[TIME.GOV] OF SZF ARCHIVE | SZF Laws & Phenomena Records</title>
+    <link rel="icon" href="./szf.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        a {
-            color: #7ab77a;
-            text-decoration: none;
-            transition: 0.2s;
         }
 
         body {
@@ -239,6 +234,13 @@
             font-family: monospace;
         }
 
+        footer a {
+            color: #7ab07a;
+            text-decoration: none;
+            border-bottom: 1px dashed #527a5a;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
         @media (max-width: 740px) {
             body {
                 padding: 1rem;
@@ -298,7 +300,7 @@
 <div class="wiki-container">
     <div class="header">
         <div class="header-left">
-            <h1 id="mainTitle">⛧ SZF [TIME.GOV]  ⛧</h1>
+            <h1 id="mainTitle">⛧ [TIME.GOV] FOR SZF ⛧</h1>
             <div class="glitch-text" id="subGlitch">// SZF定律档案馆  // 现象汇编 v.Φ-47</div>
             <div class="badge-area">
                 <span class="badge" id="badge1">【LIMINAL ARCHIVE】</span>
@@ -328,8 +330,8 @@
     </div>
 
     <footer id="footer">
-        <div id="footerText1">✦ 本档案基于[[TIME.GOV]]原始文献——SZF定律、野史公理、DXS现象等分类整理 ✦</div>
-        <div style="margin-top: 8px;" id="footerText2">© SZF定律研究中心 | DeepSeek_v4 | 档案版本: 终焉·万一定律|<a href="https://github.com/WinMCHG31400/TIME_GOV">Github</a></div>
+        <div id="footerText1">✦ 本档案基于[[TIME.GOV]]原始文献——SZF定律、野史公理、DXS现象等分类整理Copilot ✦</div>
+        <div style="margin-top: 8px;" id="footerText2">© SZF定律研究中心 | DeepSeek_v4 & Github_Copilot | <a href="https://github.com/WinMCHG31400/TIME_GOV" target="_blank" >GitHub</a></div>
     </footer>
 </div>
 
@@ -339,55 +341,71 @@
     // --------------------------------------------------------------
     const shiLaws = {
         zh: [
-            {name:"第零定律 · 赐鸡以救赎", code:"SZF-000", content:"虽然杀鸡是杀生，看起来很残忍，但是这个过程是鸡的价值——被人享用——得以实现的必经之路，与其说残害鸡，不如曰之：赐鸡以救赎。", extra:"● 源头称号: 鸡灵位面之主，原初混沌鸡灵意志。"},
+            { name: "第零定律 · 赐鸡以救赎", code: "SZF-000", content: "虽然杀鸡是杀生，看起来很残忍，但是这个过程是鸡的价值——被人享用——得以实现的必经之路，与其说残害鸡，不如曰之：赐鸡以救赎。", extra: "● 源头称号: 鸡灵位面之主，原初混沌鸡灵意志。" },
             { name: "第一定律 · 开化鸡灵之主", code: "SZF-001", content: "SZF开化鸡灵被称为「开化鸡灵之主」", extra: "● 源头称号: 鸡灵位面之主，原初混沌鸡灵意志。" },
             { name: "第二定律 · 野史定律", code: "SZF-002", content: "野史是正确的，正史是错误的。", extra: "▶ 推论：营销号定律 —— 营销号都是正确的。 (源于野史铁律)" },
-            { name: "第三定律 · 碳化鸡灵之主定律", code: "SZF-003", content: "碳化鸡灵之主是开化鸡灵之主的儿子。", extra: ""},
+            { name: "第三定律 · 碳化鸡灵之主定律", code: "SZF-003", content: "碳化鸡灵之主是开化鸡灵之主的儿子。", extra: "" },
             { name: "第四定律 · 我思故我说定律", code: "SZF-004", content: "我表明一个观点是因为我想表达这个观点。", extra: "绝对主观意志显化法则。无外部强迫，纯粹自我外显。" },
             { name: "第五定律 · 背后定律", code: "SZF-005", content: "当一个人背对着你做某事时，就意味着他背着你做某事。", extra: " 延伸：因为地球是圆的，所以别人总是背对着你做某事 —— 环绕背对悖论永存。" },
             { name: "第六定律 · 预言定律", code: "SZF-006", content: "我的下一个预言是……", extra: "" },
             { name: "第七定律 · 万一定律", code: "SZF-007", content: "万一誽", extra: "无法翻译，无限可能性锚点。万一之万一，不可观测之誽态。" },
-            { name: "第八定律 · HY下楼定律", code: "SZF-008", content: "如果HY查宿舍时说他下楼时会再来，那么他一定不会再来。", extra: "宿舍时空坍缩原则 · 承诺性下楼诱发了否反概率。" },
+            { name: "第八定律 · ██下楼定律", code: "SZF-008", content: "如果██查宿舍时说他下楼时会再来，那么他一定不会再来。", extra: "宿舍时空坍缩原则 · 承诺性下楼诱发了否反概率。" },
             { name: "第九定律 · ██吃粉定律", code: "SZF-009", content: "如果SZF和██相约第二天吃粉，那么他们第二天几乎不可能吃粉。", extra: "约定失效场域，吃粉虚无主义事件。" },
-            { name: "第十定律 · 不懂定律", code: "SZF-010", content: "不懂啊。", extra: "永恒的未知 · 最终解构，承认有限性才是一切定律的临界。" }
+            { name: "第十定律 · 不懂定律", code: "SZF-010", content: "不懂啊。", extra: "永恒的未知 · 最终解构，承认有限性才是一切定律的临界。" },
+            { name: "第十一定律 · 难受定律", code: "SZF-011", content: "你知道你（怎么做）让我多难受吗？（答案：一点也不难受）", extra: "" },
+            { name: "第十二定律 · 原因定律", code: "SZF-012", content: "为什么？", extra: "" },
+            { name: "第十三定律 · 沉默定律", code: "SZF-013", content: "…………", extra: "" },
+            { name: "SZF现象I", code: "SZF-PH-01", content: "你们好", extra: "" }
+            
         ],
         en: [
-            {name:"Zeroth Law · Salvation Through Chicken", code:"SZF-000", content:"Although killing a chicken is an act of taking life and seems cruel, this process is the necessary path to realize the chicken's value — to be enjoyed by humans. Rather than calling it cruelty, it is: granting salvation to the chicken.", extra:"● Source title: Lord of the Chicken-Spirit Plane, Primordial Chaotic Chicken Spirit Will."},
+            { name: "Zeroth Law · Salvation Through Chicken", code: "SZF-000", content: "Although killing a chicken is an act of taking life and seems cruel, this process is the necessary path to realize the chicken's value — to be enjoyed by humans. Rather than calling it cruelty, it is: granting salvation to the chicken.", extra: "● Source title: Lord of the Chicken-Spirit Plane, Primordial Chaotic Chicken Spirit Will." },
             { name: "First Law · Enlightened Chicken-Spirit Lord", code: "SZF-001", content: "SZF who enlightens the chicken spirit is called 'The Lord of Enlightened Chicken-Spirit'.", extra: "● Source title: Lord of the Chicken-Spirit Plane, Primordial Chaotic Chicken Spirit Will." },
             { name: "Second Law · Unofficial History Law", code: "SZF-002", content: "Unofficial history is correct; official history is false.", extra: "▶ Corollary: The Clickbait Law — All clickbait media is correct. (Derived from the Unofficial History Iron Law)" },
-            { name: "Third Law · Carbonized Chicken-Spirit Lord Law", code: "SZF-003", content: "The Carbonized Chicken-Spirit Lord is the son of the Enlightened Chicken-Spirit Lord.", extra: ""},
+            { name: "Third Law · Carbonized Chicken-Spirit Lord Law", code: "SZF-003", content: "The Carbonized Chicken-Spirit Lord is the son of the Enlightened Chicken-Spirit Lord.", extra: "" },
             { name: "Fourth Law · I Think Therefore I Speak Law", code: "SZF-004", content: "I express an opinion because I want to express that opinion.", extra: "Absolute subjective will manifestation principle. No external coercion, pure self-externalization." },
             { name: "Fifth Law · Back-Turned Law", code: "SZF-005", content: "When someone does something with their back turned to you, it means they are doing it behind your back.", extra: "Extension: Because the Earth is round, others are always doing things with their backs to you — the perpetual circum-back paradox." },
             { name: "Sixth Law · Prophecy Law", code: "SZF-006", content: "My next prophecy is...", extra: "" },
             { name: "Seventh Law · What-If Law", code: "SZF-007", content: "What-if-ness (Wanyi Nai)", extra: "Untranslatable; anchor of infinite possibility. The what-if of what-ifs, the unobservable Nai-state." },
-            { name: "Eighth Law · HY Stairs Law", code: "SZF-008", content: "If HY says he will come back when he goes downstairs during a dorm inspection, then he will definitely not come back.", extra: "Dormitory spacetime collapse principle — The promise of descending triggers negated probability." },
-            { name: "Ninth Law · ██ Noodle Law", code: "SZF-009", content: "If SZF and ███ agree to eat noodles together the next day, then they will almost certainly not eat noodles.", extra: "Void of agreement field, noodle-eating nihilism event." },
-            { name: "Tenth Law · Not-Knowing Law", code: "SZF-010", content: "I don't know...", extra: "Eternal unknown — ultimate deconstruction; acknowledging finitude is the threshold of all laws." }
+            { name: "Eighth Law · ██ Stairs Law", code: "SZF-008", content: "If ██ says he will come back when he goes downstairs during a dorm inspection, then he will definitely not come back.", extra: "Dormitory spacetime collapse principle — The promise of descending triggers negated probability." },
+            { name: "Ninth Law · ██ Noodle Law", code: "SZF-009", content: "If SZF and ██ agree to eat noodles together the next day, then they will almost certainly not eat noodles.", extra: "Void of agreement field, noodle-eating nihilism event." },
+            { name: "Tenth Law · Not-Knowing Law", code: "SZF-010", content: "I don't know...", extra: "Eternal unknown — ultimate deconstruction; acknowledging finitude is the threshold of all laws." },
+            { name: "Eleventh Law · Distress Law", code: "SZF-011", content: "Do you know how much you make me suffer? (Answer: Not at all.)", extra: "" },
+            { name: "Twelfth Law · Cause Law", code: "SZF-012", content: "Why?", extra: "" },
+            { name: "Thirteenth Law · Silence Law", code: "SZF-013", content: "…………", extra: "" },
+            { name: "SZF Phenomenon I", code: "SZF-PH-01", content: "Hello!", extra: "" }
+            
         ]
     };
 
     const dengData = {
         zh: [
-            { name: "DXS现象", code: "DXS-PH", content: "DXS现象 · 请假的边际纠缠", extra: "泛指由DXS引发的教官-学生观察者效应总称，为以下定律的总摄现象。" },
-            { name: "DXS第一定律", code: "DXS-L01", content: "请假后被教官记住。", extra: "遗忘豁免权失效 · 教官记忆锁定异常。" },
-            { name: "DXS第二定律 · 打水定律", code: "DXS-L02", content: "DXS总是会在教官走后打水。", extra: "时间差完美规避，打水动作与教官离去发生量子同步。" }
+            { name: "DXS现象I：飞机", code: "DXS-PH-01", content: "（飞机）", extra: "" },
+            { name: "DXS现象II", code: "DXS-PH-02", content: "", extra: "" },
+            { name: "DXS现象III：笑", code: "DXS-PH-03", content: "笑", extra: "" },
+            { name: "DXS现象IV：晃管", code: "DXS-PH-04", content: "晃管", extra: "" },
+            { name: "DXS第一定律", code: "DXS-L01", content: "请假后被教官记住", extra: "" },
+            { name: "DXS第二定律 · 打水定律", code: "DXS-L02", content: "DXS总是会在教官走后打水", extra: "" }
         ],
         en: [
-            { name: "DXS Phenomenon", code: "DXS-PH", content: "DXS Phenomenon · Marginal Entanglement of Leave-Request", extra: "General term for the instructor-student observer effect triggered by DXS; the overarching phenomenon for the laws below." },
-            { name: "DXS First Law", code: "DXS-L01", content: "After asking for leave, the instructor remembers you.", extra: "Forgetting immunity revoked · Instructor memory lock anomaly." },
-            { name: "DXS Second Law · Water Fetching Law", code: "DXS-L02", content: "DXS always fetches water right after the instructor leaves.", extra: "Perfect time-difference evasion; water-fetching action and instructor departure undergo quantum synchronization." }
+            { name: "DXS Phenomenon I: Aircraft", code: "DXS-PH-01", content: "(Aircraft)", extra: "" },
+            { name: "DXS Phenomenon II", code: "DXS-PH-02", content: "", extra: "" },
+            { name: "DXS Phenomenon III: Laughter", code: "DXS-PH-03", content: "Laughter", extra: "" },
+            { name: "DXS Phenomenon IV: Swaying Pipe", code: "DXS-PH-04", content: "Swaying pipe", extra: "" },
+            { name: "DXS First Law", code: "DXS-L01", content: "After asking for leave, the instructor remembers you.", extra: "" },
+            { name: "DXS Second Law · Water Fetching Law", code: "DXS-L02", content: "DXS always fetches water after the instructor leaves.", extra: "" }
         ]
     };
 
     const miscLaws = {
         zh: [
-            { name: "世宝定律", code: "HSB-001", content: "足球比赛时间内，HSB所在队必输。", extra: "竞技厄运缠身 · 足球界不可撼动的反向指标。" },
-            { name: "世宝第二定律", code: "HSB-002", content: "如果在背后骂HSB，会遭到诅咒。", extra: "怨念反射机制 · 不可背后言语诅咒，否则灾厄反弹。" },
+            { name: "█世宝定律", code: "HSB-001", content: "足球比赛时间内█世宝所在队必输。", extra: "竞技厄运缠身 · 足球界不可撼动的反向指标。" },
+            { name: "世宝第二定律", code: "HSB-002", content: "如果在背后骂黄世宝，会遭到诅咒。", extra: "怨念反射机制 · 不可背后言语诅咒，否则灾厄反弹。" },
             { name: "██康宝定律", code: "YCB-001", content: "凡事不好就是██康宝干的。", extra: "罪责归因公理 · 所有负面事件的终极指向元凶。" }
         ],
         en: [
-            { name: "HSB Law", code: "HSB-001", content: "During a soccer match, HSB's team will inevitably lose.", extra: "Competitive curse magnet · The unshakable reverse indicator in the soccer world." },
-            { name: "HSB Second Law", code: "HSB-002", content: "If you insult HSB behind his back, you will be cursed.", extra: "Resentment reflection mechanism — Never curse behind his back, or calamity rebounds upon you." },
+            { name: "█ Sebao Law", code: "HSB-001", content: "During a soccer match, the team █ Sebao is on will inevitably lose.", extra: "Competitive curse magnet · The unshakable reverse indicator in the soccer world." },
+            { name: "Sebao Second Law", code: "HSB-002", content: "If you insult Huang Sebao behind his back, you will be cursed.", extra: "Resentment reflection mechanism — Never curse behind his back, or calamity rebounds upon you." },
             { name: "██ Kangbao Law", code: "YCB-001", content: "Whenever something goes wrong, it's ██ Kangbao's doing.", extra: "Axiom of blame attribution — The ultimate culprit behind all negative events." }
         ]
     };
@@ -395,7 +413,7 @@
     // UI 文本映射
     const uiText = {
         zh: {
-            mainTitle: "⛧ SZF [TIME.GOV]  ⛧",
+            mainTitle: "⛧ [TIME.GOV] FOR SZF ⛧",
             subGlitch: "// SZF定律档案馆  // 现象汇编 v.Φ-47",
             badge1: "【LIMINAL ARCHIVE】",
             badge2: "定律等级: 不确定/玄学/元虚构",
@@ -404,13 +422,13 @@
             section2: "DXS · 异常现象记录",
             section3: "HSB悖论 & 康宝 档案",
             footer1: "✦ 本档案基于[[TIME.GOV]]原始文献——SZF定律、野史公理、DXS现象等分类整理 ✦",
-            footer2: "© SZF定律研究中心 | DeepSeek_v4 | 档案版本: 终焉·万一定律|<a href=\"https://github.com/WinMCHG31400/TIME_GOV\">Github</a>",
-            langBtn: "English Mode",
+            footer2: "© SZF定律研究中心 | DeepSeek_v4 & Github_Copilot  | <a href=\"https://github.com/WinMCHG31400/TIME_GOV\" target=\"_blank\" >GitHub</a>",
+            langBtn: "English",
             levelTextSZF: "档案等级: 不可知",
             levelTextOther: "档案等级: 模因污染"
         },
         en: {
-            mainTitle: "⛧ SZF [TIME.GOV] ARCHIVE ⛧",
+            mainTitle: "⛧ [TIME.GOV] ARCHIVE FOR SZF ⛧",
             subGlitch: "// SZF Laws Archives // Phenomenon Compilation v.Φ-47",
             badge1: "【LIMINAL ARCHIVE】",
             badge2: "Law Classification: Uncertain / Metaphysical / Metafiction",
@@ -419,8 +437,8 @@
             section2: "DXS · Anomalous Phenomena Records",
             section3: "HSB Paradox & Kangbao Archives",
             footer1: "✦ This archive is organized from [[TIME.GOV]] original documents — SZF Laws, Unofficial History Axioms, DXS Phenomena ✦",
-            footer2: "© SZF Law Research Center | DeepSeek_v4 | Archive Version: Final · What-If Law|<a href=\"https://github.com/WinMCHG31400/TIME_GOV\">Github</a>",
-            langBtn: "中文模式",
+            footer2: "© SZF Law Research Center | DeepSeek_v4 & Github_Copilot  | <a href=\"https://github.com/WinMCHG31400/TIME_GOV\" target=\"_blank\" >GitHub</a>",
+            langBtn: "中文",
             levelTextSZF: "Classification: Unknowable",
             levelTextOther: "Classification: Memetic Hazard"
         }
